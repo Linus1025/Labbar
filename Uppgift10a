@@ -1,0 +1,90 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace Uppgift10
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        double age1;
+        string name1;
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void buttonresult(object sender, RoutedEventArgs e)
+        {
+            name1 = Convert.ToString(boxtop.Text);
+            age1 = Convert.ToDouble(boxbot.Text);
+
+            if (age1 < 11 && age1 > 7)
+            {
+                this.fung.Visibility = Visibility.Visible;
+                this.fung.Text = "Hej " + name1 + ", du är " + age1 + " år gammal och får titta på filmer med 7års gräns och 11års med vuxen.";
+
+            }
+            else if (age1 == 15)
+            {
+                this.fung.Visibility = Visibility.Visible;
+                this.fung.Text = "Hej " + name1 + ", du är " + age1 + " år gammal och får titta på filmer med 15års gräns";
+
+            }
+            else if (age1 < 15 && age1 > 7)
+            {
+                this.fung.Visibility = Visibility.Visible;
+                this.fung.Text = "Hej " + name1 + ", du är " + age1 + " år gammal och får titta på filmer med 11års gräns";
+
+            }
+            else if (age1 > 1 && age1 < 7)
+            {
+                this.fung.Visibility = Visibility.Visible;
+                this.fung.Text = "Hej " + name1 + ", du är " + age1 + " år gammal och får titta på filmer som har 7års gräns med vuxet sällskap";
+
+            }
+            else if (age1 >= 16)
+            {
+                this.fung.Visibility = Visibility.Visible;
+                this.fung.Text = "Hej " + name1 + ", du är " + age1 + " år gammal och får titta på alla filmer";
+
+            }
+
+        }
+
+    }
+}
+
+
+<Window x:Class="Uppgift10.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Uppgift10"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="btnresult" Content="Click" HorizontalAlignment="Left" Height="38" Margin="522,231,0,0" VerticalAlignment="Top" Width="83" Click="buttonresult"/>
+        <Label Content="Namn" HorizontalAlignment="Left" Height="33" Margin="248,163,0,0" VerticalAlignment="Top" Width="112"/>
+        <Label Content="Ålder" HorizontalAlignment="Left" Height="30" Margin="248,239,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="boxtop" HorizontalAlignment="Left" Height="38" Margin="248,201,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
+        <TextBox x:Name="boxbot" HorizontalAlignment="Left" Height="44" Margin="248,274,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
+        <TextBlock x:Name="fung" HorizontalAlignment="Left" Height="59" Margin="233,350,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="228" Visibility="Collapsed" />
+
+    </Grid>
+</Window>
+
